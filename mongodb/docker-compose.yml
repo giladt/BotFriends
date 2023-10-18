@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  mongo:
+    container_name: mongodb-cluster-bf
+    image: mongo:latest
+    command: mongod --replSet mongodb-cluster
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./mongodb/database:/data/db
+    networks:
+      - mongodb-cluster
+
+networks:
+  mongodb-cluster:
